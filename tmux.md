@@ -38,7 +38,18 @@ set -g history-limit 50000
 set -g focus-events on
 set -g status-position top
 set -g allow-passthrough on
+set -g set-clipboard on
 ```
+
+### Clipboard in Nested Sessions
+
+For OSC 52 clipboard to work through nested tmux (e.g., local tmux -> SSH -> remote tmux), all three layers must cooperate:
+
+1. **Ghostty:** `clipboard-read = allow` and `clipboard-write = allow`
+2. **Outer tmux:** `allow-passthrough on` and `set-clipboard on`
+3. **Inner tmux:** `allow-passthrough on` and `set-clipboard on`
+
+On Linux, also install `xclip` or `xsel`.
 
 ### Key Bindings
 
@@ -61,7 +72,7 @@ bind-key -T copy-mode-vi v send-keys -X begin-selection
 bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
 ```
 
-`tmux-yank` handles copying to the system clipboard automatically. On Linux, install `xclip` or `xsel`.
+`tmux-yank` handles copying to the system clipboard via OSC 52. On Linux, install `xclip` or `xsel`.
 
 ### Nested tmux Support
 
@@ -132,6 +143,7 @@ bind r source-file ~/.tmux.conf \; display "Config reloaded!"
 set -g status-position top
 
 set -g allow-passthrough on
+set -g set-clipboard on
 
 # ----------------------------
 # Nested tmux support (F12 to toggle)

@@ -38,6 +38,8 @@ Configuration reference for LLM agents to set up a development environment to my
 ```
 command = /path/to/fish
 shell-integration-features = ssh-terminfo
+clipboard-read = allow
+clipboard-write = allow
 ```
 
-Set `command` to the Fish binary path for your platform.
+Set `command` to the Fish binary path for your platform. The clipboard settings enable OSC 52 clipboard access, which is required for copy/paste through nested tmux sessions.
