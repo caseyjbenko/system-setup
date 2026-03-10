@@ -1,6 +1,6 @@
 # System Setup
 
-Configuration reference for LLM agents to set up a development environment to my preferences. Supports macOS and Linux.
+Configuration reference for LLM agents to set up a development environment to my preferences. Supports macOS and Linux (including [Omarchy](https://omarchy.org) on Arch).
 
 ## Environment
 
